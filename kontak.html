@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontak — Dika Anjasmara</title>
+  <link rel="stylesheet" href="css/kontak.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<canvas id="networkCanvas"></canvas>
+
+<!-- HEADER -->
+<header class="topbar">
+  <div class="topbar-brand">
+    <img src="img/dika.png" alt="Logo" class="topbar-logo">
+    <span>DIKA <strong>ANJASMARA</strong></span>
+  </div>
+  <nav class="topbar-nav">
+    <a href="index.html" class="nav-link">Beranda</a>
+    <a href="layanan.html" class="nav-link">Layanan</a>
+    <a href="kontak.html" class="nav-link active">Kontak</a>
+  </nav>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <p class="eyebrow">Kami Siap Membantu</p>
+  <h1>Hubungi <span class="gradient-text">Kami</span></h1>
+  <p class="page-desc">Punya pertanyaan atau siap berlangganan? Kirim pesan dan tim kami akan merespons dalam 24 jam.</p>
+</section>
+
+<!-- KONTAK SECTION -->
+<section class="kontak-section">
+  <div class="kontak-grid">
+
+    <!-- INFO -->
+    <div class="info-panel">
+      <h2>Informasi Kontak</h2>
+      <p class="info-sub">Pilih cara yang paling nyaman untuk menghubungi kami.</p>
+
+      <div class="info-items">
+        <div class="info-item">
+          <div class="info-icon">📍</div>
+          <div>
+            <h4>Alamat</h4>
+            <p>Jl. Sultan Iskandar Muda<br>Banda Aceh, Aceh</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">📞</div>
+          <div>
+            <h4>Telepon / WhatsApp</h4>
+            <a href="https://wa.me/6283106366052" target="_blank">083106366052</a>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">✉️</div>
+          <div>
+            <h4>Email</h4>
+            <a href="mailto:info@dikaanjasmara.com">info@dikaanjasmara.com</a>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">🕐</div>
+          <div>
+            <h4>Jam Operasional</h4>
+            <p>Senin – Sabtu: 08.00 – 20.00<br>Support Darurat: 24/7</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-sosmed">
+        <p class="sosmed-label">Ikuti Kami</p>
+        <div class="sosmed-row">
+          <a href="#" class="sosmed-chip">📸 Instagram</a>
+          <a href="#" class="sosmed-chip">💻 GitHub</a>
+          <a href="#" class="sosmed-chip">💬 WhatsApp</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div class="form-panel">
+      <h2>Kirim Pesan</h2>
+      <p class="info-sub">Isi formulir di bawah dan kami akan segera membalas.</p>
+
+      <div class="form-body">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nama Lengkap</label>
+            <input type="text" id="fName" placeholder="Dika Anjasmara">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="fEmail" placeholder="email@contoh.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Nomor Telepon</label>
+          <input type="tel" id="fPhone" placeholder="0812xxxxxxxx">
+        </div>
+        <div class="form-group">
+          <label>Subjek</label>
+          <select id="fSubject">
+            <option value="">— Pilih Subjek —</option>
+            <option>Paket Internet</option>
+            <option>Instalasi Jaringan</option>
+            <option>Keamanan Jaringan</option>
+            <option>Maintenance</option>
+            <option>Cloud & Backup</option>
+            <option>Lainnya</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Pesan</label>
+          <textarea id="fMsg" rows="5" placeholder="Tuliskan pertanyaan atau kebutuhan Anda..."></textarea>
+        </div>
+        <button class="btn-submit" onclick="submitForm()">
+          <span>Kirim Pesan</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+
+      <p class="form-note" id="formNote"></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="img/dika.png" alt="Logo" style="height:42px;border-radius:50%;">
+      <div>
+        <h4>Dika Anjasmara</h4>
+        <p>Solusi jaringan terpercaya</p>
+      </div>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Beranda</a>
+      <a href="layanan.html">Layanan</a>
+      <a href="kontak.html">Kontak</a>
+    </div>
+    <p class="footer-copy">© 2025 Dika Anjasmara. All rights reserved.</p>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/main.js"></script>
+<script>
+function submitForm() {
+  const name    = document.getElementById('fName').value.trim();
+  const email   = document.getElementById('fEmail').value.trim();
+  const subject = document.getElementById('fSubject').value;
+  const msg     = document.getElementById('fMsg').value.trim();
+  const note    = document.getElementById('formNote');
+
+  if (!name || !email || !subject || !msg) {
+    showToast('⚠️ Semua kolom wajib diisi', '#FFB800');
+    return;
+  }
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!re.test(email)) {
+    showToast('⚠️ Format email tidak valid', '#FF6B6B');
+    return;
+  }
+
+  const btn = document.querySelector('.btn-submit');
+  btn.disabled = true;
+  btn.innerHTML = '<span>Mengirim...</span>';
+
+  setTimeout(() => {
+    note.textContent = '✅ Pesan berhasil dikirim! Kami akan membalas dalam 24 jam.';
+    note.style.color = '#00D4FF';
+    btn.innerHTML = '<span>Kirim Pesan</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>';
+    btn.disabled = false;
+    // Reset
+    ['fName','fEmail','fPhone','fMsg'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('fSubject').value = '';
+    showToast('📨 Pesan terkirim! Terima kasih, ' + name.split(' ')[0]);
+  }, 1500);
+}
+</script>
+</body>
+</html>

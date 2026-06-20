@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dika Anjasmara — Solusi Jaringan</title>
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<canvas id="networkCanvas"></canvas>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-pulse"></div>
+      <span>DA<span class="accent">.</span></span>
+    </div>
+
+    <div class="sidebar-section">
+      <h3 class="sidebar-title">Login</h3>
+      <div class="input-group">
+        <span class="input-icon">👤</span>
+        <input type="text" placeholder="Username" id="loginUser">
+      </div>
+      <div class="input-group">
+        <span class="input-icon">🔒</span>
+        <input type="password" placeholder="Password" id="loginPass">
+      </div>
+      <button class="btn-primary" onclick="handleLogin()">Masuk</button>
+      <p class="sidebar-note" id="loginMsg"></p>
+    </div>
+
+    <div class="divider"><span>atau</span></div>
+
+    <div class="sidebar-section">
+      <h3 class="sidebar-title">Daftar Akun</h3>
+      <div class="input-group">
+        <span class="input-icon">✉️</span>
+        <input type="email" placeholder="Email Anda" id="regEmail">
+      </div>
+      <button class="btn-outline" onclick="handleRegister()">Lanjutkan</button>
+      <button class="btn-ghost" onclick="createAccount()">+ Buat Akun Baru</button>
+    </div>
+
+    <div class="sidebar-sosmed">
+      <a href="#" class="sosmed-btn" title="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="#" class="sosmed-btn" title="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.49.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.8c.85.004 1.7.114 2.5.33 1.9-1.29 2.74-1.02 2.74-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12c0-5.52-4.48-10-10-10z"/></svg>
+      </a>
+      <a href="#" class="sosmed-btn" title="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.48-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.14-.13.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.92-2.19-.24-.57-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.09 4.49.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.75-.72 2-1.41.25-.69.25-1.28.17-1.41-.07-.12-.27-.2-.57-.34z"/><path d="M12.05 2.03C6.5 2.03 1.98 6.55 1.98 12.1c0 1.77.47 3.5 1.35 5.02L2 22l5.03-1.32a10.04 10.04 0 0 0 4.99 1.34h.01c5.54 0 10.07-4.52 10.07-10.07S17.6 2.03 12.05 2.03zm.01 18.48a8.39 8.39 0 0 1-4.27-1.17l-.3-.18-3.14.82.84-3.06-.2-.32a8.35 8.35 0 0 1-1.28-4.47c0-4.63 3.77-8.4 8.4-8.4 4.63 0 8.4 3.77 8.4 8.4s-3.77 8.38-8.45 8.38z"/></svg>
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HEADER -->
+    <header class="topbar">
+      <button class="menu-toggle" onclick="toggleSidebar()" id="menuBtn">☰</button>
+      <div class="topbar-brand">
+        <img src="img/dika.png" alt="Logo" class="topbar-logo">
+        <span>DIKA <strong>ANJASMARA</strong></span>
+      </div>
+      <nav class="topbar-nav">
+        <a href="index.html" class="nav-link active">Beranda</a>
+        <a href="layanan.html" class="nav-link">Layanan</a>
+        <a href="kontak.html" class="nav-link">Kontak</a>
+      </nav>
+      <button class="btn-logout" id="logoutBtn" onclick="logout()" style="display:none">Logout</button>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">🌐 Jaringan Profesional</div>
+        <h1 class="hero-title">Solusi Jaringan<br><span class="gradient-text">Cepat, Stabil, Aman</span></h1>
+        <p class="hero-desc">Menyediakan layanan jaringan komputer terpercaya untuk kebutuhan bisnis dan personal Anda. Koneksi tanpa batas, dukungan 24 jam.</p>
+        <div class="hero-actions">
+          <a href="layanan.html" class="btn-cta">Lihat Layanan →</a>
+          <a href="kontak.html" class="btn-cta-ghost">Hubungi Kami</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-num" data-target="500">0</span><span class="stat-suffix">+</span>
+            <span class="stat-label">Pelanggan</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num" data-target="99">0</span><span class="stat-suffix">%</span>
+            <span class="stat-label">Uptime</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num" data-target="24">0</span><span class="stat-suffix">/7</span>
+            <span class="stat-label">Support</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="ring ring-1"></div>
+        <div class="ring ring-2"></div>
+        <div class="ring ring-3"></div>
+        <img src="img/dika.png" alt="Logo Dika" class="hero-logo">
+      </div>
+    </section>
+
+    <!-- PAKET -->
+    <section class="paket">
+      <div class="section-head">
+        <p class="section-eyebrow">Harga Transparan</p>
+        <h2 class="section-title">Paket Internet</h2>
+        <p class="section-sub">Pilih paket yang paling sesuai kebutuhan Anda</p>
+      </div>
+
+      <div class="cards-grid">
+
+        <div class="paket-card" data-aos>
+          <div class="card-badge">Starter</div>
+          <h3 class="card-name">BASIC</h3>
+          <div class="card-speed">
+            <span class="speed-num">10</span>
+            <span class="speed-unit">Mbps</span>
+          </div>
+          <ul class="card-features">
+            <li>✅ Internet Stabil</li>
+            <li>✅ 1–2 Perangkat</li>
+            <li>✅ Support 24 Jam</li>
+            <li>❌ Gaming Optimal</li>
+            <li>❌ Prioritas Jaringan</li>
+          </ul>
+          <div class="card-price">Rp 150.000<span>/bln</span></div>
+          <a href="kontak.html" class="card-btn">Pilih Paket</a>
+        </div>
+
+        <div class="paket-card featured" data-aos>
+          <div class="card-badge popular">⭐ Terpopuler</div>
+          <h3 class="card-name">PRO</h3>
+          <div class="card-speed">
+            <span class="speed-num">30</span>
+            <span class="speed-unit">Mbps</span>
+          </div>
+          <ul class="card-features">
+            <li>✅ Internet Super Stabil</li>
+            <li>✅ 3–6 Perangkat</li>
+            <li>✅ Support 24 Jam</li>
+            <li>✅ Gaming Optimal</li>
+            <li>❌ Prioritas Jaringan</li>
+          </ul>
+          <div class="card-price">Rp 250.000<span>/bln</span></div>
+          <a href="kontak.html" class="card-btn featured-btn">Pilih Paket</a>
+        </div>
+
+        <div class="paket-card" data-aos>
+          <div class="card-badge">Elite</div>
+          <h3 class="card-name">PREMIUM</h3>
+          <div class="card-speed">
+            <span class="speed-num">50</span>
+            <span class="speed-unit">Mbps</span>
+          </div>
+          <ul class="card-features">
+            <li>✅ Internet Super Stabil</li>
+            <li>✅ 6+ Perangkat</li>
+            <li>✅ Prioritas Support</li>
+            <li>✅ Gaming Optimal</li>
+            <li>✅ Prioritas Jaringan</li>
+          </ul>
+          <div class="card-price">Rp 350.000<span>/bln</span></div>
+          <a href="kontak.html" class="card-btn">Pilih Paket</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="img/dika.png" alt="Logo" style="height:48px; border-radius:50%;">
+          <div>
+            <h4>Dika Anjasmara</h4>
+            <p>Solusi jaringan terpercaya</p>
+          </div>
+        </div>
+        <div class="footer-links">
+          <a href="index.html">Beranda</a>
+          <a href="layanan.html">Layanan</a>
+          <a href="kontak.html">Kontak</a>
+        </div>
+        <p class="footer-copy">© 2025 Dika Anjasmara. All rights reserved.</p>
+      </div>
+    </footer>
+
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
